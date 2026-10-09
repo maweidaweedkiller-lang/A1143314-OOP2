@@ -1,0 +1,3 @@
+AI 原本給的登入視窗程式連編譯都過不了，密碼判斷那行的字串沒寫完，if 也少了括號。修好語法後還有幾個問題：setLayout(null) 卻沒用 setBounds 設定元件位置，所以視窗裡什麼都看不到；setVisible(true) 放在元件加入之前，畫面可能空白；字串用 == 比較，就算輸入 admin 也永遠登入失敗。
+我改成每個元件都用 setBounds 定位，把 setVisible(true) 移到最後，字串比較改用 equals()。另外把密碼欄換成 JPasswordField，避免密碼明文顯示；登入結果從 System.out.println 改成 JOptionPane 跳窗，使用者才看得到成功或失敗；再加上 EXIT_ON_CLOSE，關掉視窗時程式會真的結束。
+原圖的密碼字串被截掉，所以先用 1234 當練習用的密碼。
