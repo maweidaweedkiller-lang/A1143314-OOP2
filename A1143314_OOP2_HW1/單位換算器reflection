@@ -1,0 +1,4 @@
+第一次我只跟 AI 說「仿刻一個單位換算器」，沒有給規格，AI 就自己決定了介面和功能，結果跟 Exercise 2 的規格有很多地方不一樣：視窗是 420×300 而不是 480×280；類別選單沒有放在 NORTH，而是和輸入欄一起用 GridLayout 擠在 CENTER；結果顯示在 JLabel，不是第二個 JTextField；還多加了公里、英里、台斤等規格沒有的單位，以及對調按鈕。程式本身可以跑、換算也正確，但不符合作業要求。
+我把簡報和完整規格給 AI 之後請它重寫，改成：視窗 480×280、BorderLayout；NORTH 放換算類型的 JComboBox；CENTER 用兩列，每列一個 JTextField 加一個單位 JComboBox；SOUTH 放換算按鈕，結果寫進第二個 JTextField，並用 setEditable(false) 讓它只能看不能改。單位也照規格縮減成長度 4 個、重量 4 個、溫度 3 個，切換類型時兩個單位選單會跟著換。
+另外，第一版的事件處理用 lambda，還用了 LinkedHashMap 和 static 區塊存單位，這些簡報都沒有教。第二版改成簡報第 28～31 頁的寫法：implements ActionListener、addActionListener(this)，在 actionPerformed 裡用 getSource() 分辨是選單還是按鈕觸發；單位改用陣列存，用 getSelectedIndex() 查倍數，比較好對照課堂內容。
+這次學到：給 AI 的需求越模糊，它越會自己補，最後做出來的東西不一定是我要的，所以下指令時要把規格講清楚，拿到程式也要逐條對照規格檢查。
